@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import getCurrentLocation from "../../apis/getCurrentLocation";
 import { getWeatherByCoordinate } from "../../apis/getWeather";
 import { ICoordinate, IWeatherProps } from "../../interfaces/weather";
-import Meta from "./components/Meta";
+import VerticalDivider from "../Commons/components/VerticalDivider";
+import Meta from "../Commons/components/Meta";
+import styles from './Current.module.css';
 
 
 const Current: React.FC = () => {
@@ -48,15 +50,27 @@ const Current: React.FC = () => {
 	console.log(coord);
 	console.log(weather);
 	return (
-		<div>
+		<div className={styles.current}>
 			{loading ? (
-				<div>
+				<div className={styles.loading}>
 					<div>Loading....</div>
 				</div>
 			) : (
-					<div>
-						<Meta title="WIND" value={`${weather?.wind?.speed} K/M`} />
-					</div>
+					<>
+						<div className={styles.left}>
+							<Meta className={styles.temperature} value={`${weather?.main.temp} °`} />
+							<Meta className={styles.clouds} value={`${weather?.weather[0].main}`} />
+							<div className={styles.bottomMetas}>
+								<Meta className={styles.humidity} title='HUMIDITY' value={`${weather?.wind?.speed} %`} />
+								<VerticalDivider width='2px' color="rgba(255, 255, 255, 0.7)" />
+								<Meta className={styles.wind} title='WIND' value={`${weather?.wind?.speed} K/M`} />
+							</div>
+						</div>
+						<div className={styles.right}>
+							<Meta className={styles.location}  value={`${weather?.name}`} />
+						</div>
+						<div className={styles.bottom} />
+					</>
 			)}
 		</div>
 	);
