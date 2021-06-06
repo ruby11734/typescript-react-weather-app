@@ -1,6 +1,21 @@
-.App {
-  text-align: center;
-  margin: 1000px auto;
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+   background-image: url(https://wallpaperaccess.com/full/2629319.png);
+  background-size: cover;
+}
+
+.weather{
+	margin: 60px;
+	background-color: white;
+	border-radius: 25px;
+	box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 1024px) {
+
 }
 
 /* .App-logo {

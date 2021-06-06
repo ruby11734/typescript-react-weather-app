@@ -1,0 +1,114 @@
+.loading{
+	font-size: 3rem;
+	padding: 40px;
+}
+
+.current{
+	display: flex;
+	flex-direction: column;
+	background-image: url(https://i.imgur.com/GhQZhaO.jpg);
+  	background-size: cover;
+	border-top-left-radius: 25px;
+  	border-top-right-radius: 25px;
+	color: white;
+	padding: 40px 0;
+	position: relative;
+}
+
+.left{
+	padding: 0 25px;
+}
+
+.temperature{
+	margin-top: 3rem;
+	font-size: 3rem;
+	text-align: center;
+}
+
+.clouds {
+	text-align: center;
+	letter-spacing: 5px;
+	font-size: 1.5rem;
+}
+
+.bottomMetas{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 3rem;
+	text-align: center;
+}
+
+.humidity{
+	margin-right: 30px;
+}
+
+.wind{
+	margin-left: 30px;
+}
+
+.right{
+	padding: 0 25px;
+	display: flex;
+	justify-content: center;
+	order: -1;
+}
+
+.location{
+	margin:0;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.location::after{
+	content: '';
+	display: block;
+	margin-top: 0.5rem;
+	height: 1px;
+	background-color: white;
+	width: 50%;
+	transform: translateX(50%);
+}
+
+.bottom{
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+	.loading{
+		padding: 65px;
+	}
+	.current{
+		flex-direction: row;
+		padding: 65px 0;
+	}
+
+	.left{
+		padding: 0 95px;
+	}
+
+	.temperature{
+		margin: 0;
+		font-size: 5rem;
+	}
+
+	.right{
+		padding: 0 95px;
+		order: 1;
+		flex:1;
+	}
+
+	.location{
+		margin-top: 16px;
+		font-weight: 500;
+	}
+	.location::after{
+		margin-top: 1rem;
+		height: 3px;
+	}
+}

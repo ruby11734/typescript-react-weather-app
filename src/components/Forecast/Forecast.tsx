@@ -35,7 +35,7 @@ const Forecast = (props: ForecastProps) => {
 		<div>
 			{
 				weatherList?.map((weather) => (
-					<Everyday weather={weather} />
+					<Everyday key={weather.id} weather={weather} />
 				))
 			}
 		</div>

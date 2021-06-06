@@ -15,6 +15,7 @@ export interface IWeatherProps {
 		temp_max?: number;
 		humidity?: number;
 	}
+	weather: ICloudsProps[];
 	wind?: {
 		speed: number;
 	}
