@@ -8,7 +8,7 @@ interface IMetaProps {
 	value: string;
 }
 
-const Meta = ({className, title, value }: IMetaProps) => {
+const Meta: React.FC<IMetaProps> = ({className, title, value }) => {
 	return (
 		<div className={className}>
 			{title && <Text className={styles.title}>{title}</Text>}

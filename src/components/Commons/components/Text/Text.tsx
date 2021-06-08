@@ -1,16 +1,13 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 interface ITextProps {
 	className: string;
 	children: string;
 }
 
-const Text = ({className, children}: ITextProps) => {
-
-	console.log(className);
-	return (
+const Text: React.FC<ITextProps> = ({className, children}) => (
 		<span className={className}>{children}</span>
-	);
- }
+);
+
 
 export default Text;

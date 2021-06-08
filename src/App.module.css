@@ -14,8 +14,26 @@
 	box-shadow: 0 0 16px rgb(0, 0, 0, 0.5);
 }
 
-@media screen and (min-width: 1024px) {
+.bottom{
+	display: flex;
+	flex-direction: column;
+}
 
+.divider{
+	display: none;
+}
+
+@media screen and (min-width: 1024px) {
+	.bottom{
+		flex-direction: row;
+		padding: 35px 0;
+	}
+
+	.divider{
+		display: block;
+		width: 3px;
+		background-color: rgba(0, 0, 0, 0.1);
+	}
 }
 
 /* .App-logo {

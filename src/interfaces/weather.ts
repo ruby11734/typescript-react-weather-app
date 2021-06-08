@@ -23,7 +23,7 @@ export interface IWeatherProps {
 }
 
 export interface ICloudsProps {
-	id: number;
+	id?: number;
 	main: string;
 	icon: string;
 }

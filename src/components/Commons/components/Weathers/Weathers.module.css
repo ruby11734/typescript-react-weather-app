@@ -1,0 +1,36 @@
+.block{
+	padding: 25px 35px;
+}
+
+.header{
+	margin:0;
+	margin-bottom: 8px;
+	letter-spacing: 2px;
+	/* font-weight: 300; */
+}
+
+.title{
+	letter-spacing: 1px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.icon{
+	width: 50px;
+}
+
+.temperature{
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 1024px){
+	.block{
+		padding: 0 48px;
+	}
+
+	.header{
+		margin-bottom: 16px;
+		font-size: 24px;
+	}
+}

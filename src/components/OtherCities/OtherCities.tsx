@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { getWeathersByMultipleCityId } from '../../apis/getWeather';
 import MAIN_CITY from '../../constants/CityMap';
 import { IWeatherProps } from '../../interfaces/weather';
-import City from './components/City';
+import Weathers from '../Commons/components/Weathers';
+import Loading from "../Commons/components/Loading";
 import styles from './OtherCities.module.css';
 
-const OtherCities: React.FC = () => {
+const parentStyles: string[] = [styles.otherCities];
+const childrenStyles: string[] = [styles.city, styles.name, styles.icon, styles.temperature];
+
+interface IHandler {
+	handleCityClick: (weather: IWeatherProps) => void;
+}
+
+const OtherCities:React.FC<IHandler> = ({handleCityClick}) => {
 	const [weatherList, setWeatherList] = useState<Array<IWeatherProps>>();
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		getCityWeather();
@@ -17,21 +26,29 @@ const OtherCities: React.FC = () => {
 		await getWeathersByMultipleCityId(ids).then((response) => {
 			const { data } = response;
 			setWeatherList(data.list);
+			setLoading(false);
 		});
 	}
 
+	// 	const handleCityClick = (id: number) => {
+	// 	console.log(id);
+	//  }
+
 	return (
-		<div className={styles.otherCities}>
-			{weatherList?.map((weather) => {
-				return (
-					<City
-						key={weather.id}
-						name={weather.name}
-						weather={weather}
+		<>
+			{loading ? (
+				<Loading />
+			) : (weatherList && (
+					<Weathers
+						parentStyles={parentStyles}
+						header={"Other Cities"}
+						weatherList={weatherList}
+						childrenStyles={childrenStyles}
+						onClick={handleCityClick}
 					/>
-				);
-			})}
-		</div>
+				))
+			}
+		</>
 	)
 }
 

@@ -1,5 +1,4 @@
 .forecast{
-	padding: 25px 35px;
 	order:-1;
 }
 
@@ -17,24 +16,16 @@
 }
 
 .day{
-	margin: 1rem 0;
-	font-weight: normal;
-	/* font-size: 1rem; */
+	margin: 16px 0;
+
 }
 
-.icon{
-	width: 50px;
-}
-
-.temperature {
-	text-align: left;
-	font-size: 1.25rem;
-	color: rgba(0, 0, 0, 0.5);
+.temperature{
+	margin-top: 16px;
 }
 
 @media screen and (min-width: 1024px){
 	.forecast{
-		padding: 0 48px;
 		flex: 1;
 		order: 1;
 	}

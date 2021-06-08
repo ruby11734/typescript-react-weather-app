@@ -1,22 +1,8 @@
 import React from "react";
 
 interface IDividerProps {
-	color: string;
-	width: string;
-	className?: string;
+	className: string;
 }
-const VerticalDivider = (props: IDividerProps) => {
-	const { color, width, className } = props;
-
-	return (
-		<div
-			// className={className}
-			style={{
-				width,
-				backgroundColor: color,
-			}}
-		/>
-	);
-}
+const VerticalDivider = (props: IDividerProps) => (<div className={props.className} />)
 
 export default VerticalDivider;

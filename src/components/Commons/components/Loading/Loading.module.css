@@ -1,0 +1,11 @@
+.loading{
+	font-size:50px;
+	padding: 65px;
+	text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+	.loading{
+		width: 100%;
+	}
+}

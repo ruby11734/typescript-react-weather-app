@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import getForecastById from "../../apis/getForecast";
 import { IWeatherProps } from "../../interfaces/weather";
-import Everyday from "./components/Everyday";
+import Loading from "../Commons/components/Loading";
+import Weathers from "../Commons/components/Weathers";
+import styles from './Forecast.module.css';
+
+const parentStyles: string[] = [styles.forecast, styles.weathers];
+const childrenStyles: string[] = [styles.everyday, styles.day, styles.icon, styles.temperature];
 
 type ForecastProps = {
 	id: number;
 }
 
-const Forecast = (props: ForecastProps) => {
+const Forecast: React.FC<ForecastProps> = ({id}) => {
 	const [weatherList, setWeatherList] = useState<Array<IWeatherProps>>();
-	const { id } = props;
-
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		getForecast();
@@ -21,25 +25,29 @@ const Forecast = (props: ForecastProps) => {
 			const { list } = response.data;
 
 			setWeatherList(getWeeklyWeather(list));
+			setLoading(false);
 		})
 	}
 
-	const getWeeklyWeather = (list: Array<IWeatherProps>) => {
-		return list.filter(weather =>
-			new Date(weather.dt_txt).getHours() === 12
-		)
-	}
+	const getWeeklyWeather = (list: Array<IWeatherProps>) => list.filter(weather => (
+			new Date(weather.dt_txt).getHours() === 12)
+	)
 
-	console.log(weatherList);
 	return (
-		<div>
-			{
-				weatherList?.map((weather) => (
-					<Everyday key={weather.id} weather={weather} />
+		<>
+			{loading ? (
+				<Loading />
+			) : (weatherList && (
+					<Weathers
+						parentStyles={parentStyles}
+						header={"Forecast"}
+						weatherList={weatherList}
+						childrenStyles={childrenStyles}
+					/>
 				))
 			}
-		</div>
-	);
+		</>
+	)
 }
 
 export default Forecast;

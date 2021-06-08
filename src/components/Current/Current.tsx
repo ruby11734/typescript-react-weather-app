@@ -5,9 +5,13 @@ import { ICoordinate, IWeatherProps } from "../../interfaces/weather";
 import VerticalDivider from "../Commons/components/VerticalDivider";
 import Meta from "../Commons/components/Meta";
 import styles from './Current.module.css';
+import Loading from "../Commons/components/Loading";
 
+interface ICurrentProps {
+	cityWeather?: IWeatherProps | null;
+}
 
-const Current: React.FC = () => {
+const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [coord, setCoord] = useState<ICoordinate>();
 	const [weather, setWeather] = useState<IWeatherProps>();
@@ -18,7 +22,7 @@ const Current: React.FC = () => {
 
 	useEffect(() => {
 		getLocationWeather();
-	}, [coord?.lat]);
+	}, [coord?.lat, cityWeather]);
 
 	const getLocation = () => {
 		getCurrentLocation().then((position) => {
@@ -30,31 +34,21 @@ const Current: React.FC = () => {
 	}
 
 	const getLocationWeather = () => {
-		if (coord) {
+		if (coord && !cityWeather) {
 			getWeatherByCoordinate(coord).then((res) => {
 				const { data } = res;
-				setWeather(
-					data
-					// id: data.id,
-					// name: data.name,
-					// temperature: data.main.temp,
-					// clouds: data.weather[0].main,
-					// humidity: data.main.humidity,
-					// wind: data.wind.speed,
-				);
+				setWeather(data);
 				setLoading(false);
 			})
+		} else if (cityWeather) {
+			setWeather(cityWeather);
 		}
 	}
 
-	console.log(coord);
-	console.log(weather);
 	return (
 		<div className={styles.current}>
 			{loading ? (
-				<div className={styles.loading}>
-					<div>Loading....</div>
-				</div>
+				<Loading />
 			) : (
 					<>
 						<div className={styles.left}>
@@ -62,7 +56,7 @@ const Current: React.FC = () => {
 							<Meta className={styles.clouds} value={`${weather?.weather[0].main}`} />
 							<div className={styles.bottomMetas}>
 								<Meta className={styles.humidity} title='HUMIDITY' value={`${weather?.wind?.speed} %`} />
-								<VerticalDivider width='2px' color="rgba(255, 255, 255, 0.7)" />
+								<VerticalDivider className={styles.divider} />
 								<Meta className={styles.wind} title='WIND' value={`${weather?.wind?.speed} K/M`} />
 							</div>
 						</div>
