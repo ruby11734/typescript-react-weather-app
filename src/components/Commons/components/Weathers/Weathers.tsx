@@ -22,7 +22,7 @@ const Weathers: React.FC<IWeathersDisplayProps> = (props) => {
 		return header === 'Other Cities' ? weather.id : weather.dt_txt;
 	}
 
-	const getDisplayType = (weather: IWeatherProps): string => {
+	const getTitle = (weather: IWeatherProps): string => {
 		return header === 'Other Cities'
 			? weather.name
 			: WEEK[new Date(weather.dt_txt).getDay()];
@@ -38,18 +38,13 @@ const Weathers: React.FC<IWeathersDisplayProps> = (props) => {
 					weatherList?.map((weather) => (
 						<Weather
 							key={getKey(weather)}
-							childrenStyles={childrenStyles[0]}
-							blockType={getBlockType}
-							onClick={()=>handleCityClick? handleCityClick(weather):null}
-						>
-							<h3 className={cx('title',childrenStyles[1])}>{getDisplayType(weather)}</h3>
-							<img
-								className={cx('icon',childrenStyles[2])}
-								src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-								alt={weather.weather[0].main}
-							/>
-							<div className={cx('temperature', childrenStyles[3])}>{`${Math.round(weather.main.temp)} °`}</div>
-						</Weather>
+							childrenStyles={childrenStyles}
+							CustomTag={`${getBlockType}`}
+							onClick={() => handleCityClick ? handleCityClick(weather) : null}
+							title={getTitle(weather)}
+							clouds={weather.weather[0]}
+							temperature={`${Math.round(weather.main.temp)} °`}
+						/>
 					))
 				}
 			</div>

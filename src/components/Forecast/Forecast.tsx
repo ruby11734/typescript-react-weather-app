@@ -34,7 +34,7 @@ const Forecast: React.FC<ForecastProps> = ({id}) => {
 	)
 
 	return (
-		<>
+		<div>
 			{loading ? (
 				<Loading />
 			) : (weatherList && (
@@ -46,7 +46,7 @@ const Forecast: React.FC<ForecastProps> = ({id}) => {
 					/>
 				))
 			}
-		</>
+		</div>
 	)
 }
 

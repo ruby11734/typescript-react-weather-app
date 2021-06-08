@@ -6,6 +6,7 @@ import VerticalDivider from "../Commons/components/VerticalDivider";
 import Meta from "../Commons/components/Meta";
 import styles from './Current.module.css';
 import Loading from "../Commons/components/Loading";
+import { getWeatherByCityName } from "../../apis/getWeather/getWeather";
 
 interface ICurrentProps {
 	cityWeather?: IWeatherProps | null;
@@ -30,7 +31,7 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 				lat: position.coords.latitude,
 				lon: position.coords.longitude,
 			})
-		})
+		});
 	}
 
 	const getLocationWeather = () => {

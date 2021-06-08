@@ -8,8 +8,7 @@ const OpenWeatherMap = axios.create({
 });
 
 const requestWithAppId = (config: AxiosRequestConfig) => {
-	// console.log(APP_ID);
-	config.params.appid = 'b091783d6e0f7a19cde9004ff5adc247';
+	config.params.appid = APP_ID;
 	return config;
 }
 

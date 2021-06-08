@@ -25,6 +25,11 @@
 	margin-right: 25px;
 }
 
+.temperature{
+	width: 45px;
+	text-align: center;
+}
+
 @media screen and (min-width: 1024px) {
 	.otherCities{
 		border: 0;

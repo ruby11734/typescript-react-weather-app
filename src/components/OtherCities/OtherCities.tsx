@@ -30,12 +30,8 @@ const OtherCities:React.FC<IHandler> = ({handleCityClick}) => {
 		});
 	}
 
-	// 	const handleCityClick = (id: number) => {
-	// 	console.log(id);
-	//  }
-
 	return (
-		<>
+		<div>
 			{loading ? (
 				<Loading />
 			) : (weatherList && (
@@ -46,9 +42,10 @@ const OtherCities:React.FC<IHandler> = ({handleCityClick}) => {
 						childrenStyles={childrenStyles}
 						onClick={handleCityClick}
 					/>
+
 				))
 			}
-		</>
+		</div>
 	)
 }
 

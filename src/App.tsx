@@ -17,7 +17,7 @@ const App = () => {
 	return (
 		<div className={styles.app}>
 			<div className={styles.weather}>
-				<Current cityWeather={weather||null} />
+				<Current cityWeather={weather || null} />
 				<div className={styles.bottom}>
 					<OtherCities handleCityClick={handleCityClick}/>
 					<VerticalDivider className={styles.divider}/>
