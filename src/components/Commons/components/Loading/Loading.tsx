@@ -1,4 +1,17 @@
 import React from "react";
+import classNames from "classnames/bind";
 import styles from './Loading.module.css';
 
-export default () => <div className={styles.loading}>loading...</div>
+interface ILoadingProps {
+	loadingStyle?: string;
+}
+
+export default ({loadingStyle}: ILoadingProps) => {
+	const cx = classNames.bind(styles);
+
+	return(
+		<div className={cx('loading', loadingStyle)}>
+			<div >loading...</div>
+		</div>
+	)
+}

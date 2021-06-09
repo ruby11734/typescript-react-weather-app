@@ -4,6 +4,7 @@ import { IWeatherProps } from "../../../../interfaces/weather";
 import Weather from "./components/Weather";
 import classNames from 'classnames/bind'
 import styles from './Weathers.module.css';
+import Loading from "../Loading";
 
 interface IWeathersDisplayProps {
 	parentStyles: string[];
@@ -11,10 +12,11 @@ interface IWeathersDisplayProps {
 	weatherList: IWeatherProps[];
 	childrenStyles: string[];
 	onClick?: (weather: IWeatherProps) => void;
+	loading: boolean;
 }
 
 const Weathers: React.FC<IWeathersDisplayProps> = (props) => {
-	const { parentStyles, header, weatherList, childrenStyles, onClick: handleCityClick} = props;
+	const { parentStyles, header, weatherList, childrenStyles, loading, onClick: handleCityClick} = props;
 
 	const cx = classNames.bind(styles);
 
@@ -28,18 +30,21 @@ const Weathers: React.FC<IWeathersDisplayProps> = (props) => {
 			: WEEK[new Date(weather.dt_txt).getDay()];
 	}
 
-	const getBlockType = header === 'Other Cities' ? 'button' : 'div';
+	const getCustomTag = header === 'Other Cities' ? 'button' : 'div';
 
 	return (
-		<div className={cx('block',parentStyles[0])}>
+		<div className={cx('block')}>
 			<h2 className={styles.header}>{header}</h2>
-			<div className={parentStyles[1]}>
+			{loading ? (
+				<Loading />
+			) : (
+				<div className={parentStyles[1]}>
 				{
 					weatherList?.map((weather) => (
 						<Weather
 							key={getKey(weather)}
 							childrenStyles={childrenStyles}
-							CustomTag={`${getBlockType}`}
+							CustomTag={`${getCustomTag}`}
 							onClick={() => handleCityClick ? handleCityClick(weather) : null}
 							title={getTitle(weather)}
 							clouds={weather.weather[0]}
@@ -47,7 +52,8 @@ const Weathers: React.FC<IWeathersDisplayProps> = (props) => {
 						/>
 					))
 				}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 }

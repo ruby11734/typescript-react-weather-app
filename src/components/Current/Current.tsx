@@ -25,8 +25,8 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 		getLocationWeather();
 	}, [coord?.lat, cityWeather]);
 
-	const getLocation = () => {
-		getCurrentLocation().then((position) => {
+	const getLocation = async () => {
+		await getCurrentLocation().then((position) => {
 			setCoord({
 				lat: position.coords.latitude,
 				lon: position.coords.longitude,
@@ -34,9 +34,9 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 		});
 	}
 
-	const getLocationWeather = () => {
+	const getLocationWeather = async () => {
 		if (coord && !cityWeather) {
-			getWeatherByCoordinate(coord).then((res) => {
+			await getWeatherByCoordinate(coord).then((res) => {
 				const { data } = res;
 				setWeather(data);
 				setLoading(false);
@@ -49,7 +49,7 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 	return (
 		<div className={styles.current}>
 			{loading ? (
-				<Loading />
+				<Loading loadingStyle={styles.loading}/>
 			) : (
 					<>
 						<div className={styles.left}>

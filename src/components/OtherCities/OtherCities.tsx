@@ -3,7 +3,7 @@ import { getWeathersByMultipleCityId } from '../../apis/getWeather';
 import MAIN_CITY from '../../constants/CityMap';
 import { IWeatherProps } from '../../interfaces/weather';
 import Weathers from '../Commons/components/Weathers';
-import Loading from "../Commons/components/Loading";
+import classNames from 'classnames/bind'
 import styles from './OtherCities.module.css';
 
 const parentStyles: string[] = [styles.otherCities];
@@ -16,6 +16,9 @@ interface IHandler {
 const OtherCities:React.FC<IHandler> = ({handleCityClick}) => {
 	const [weatherList, setWeatherList] = useState<Array<IWeatherProps>>();
 	const [loading, setLoading] = useState<boolean>(true);
+	const [toggle, setToggle] = useState<boolean>(false);
+
+	const cx = classNames.bind(styles);
 
 	useEffect(() => {
 		getCityWeather();
@@ -30,21 +33,32 @@ const OtherCities:React.FC<IHandler> = ({handleCityClick}) => {
 		});
 	}
 
-	return (
-		<div>
-			{loading ? (
-				<Loading />
-			) : (weatherList && (
-					<Weathers
-						parentStyles={parentStyles}
-						header={"Other Cities"}
-						weatherList={weatherList}
-						childrenStyles={childrenStyles}
-						onClick={handleCityClick}
-					/>
+	const handleToggle = () => setToggle(!toggle);
 
-				))
+	return (
+		<div className={styles.otherCities}>
+			{
+				!toggle && (
+					<button
+						className={styles.toggle}
+						onClick={handleToggle}
+					>
+						View More Cities ...
+					</button>
+				)
 			}
+				<div className={cx('container', { active: toggle })}>
+					{weatherList && (
+						<Weathers
+							parentStyles={parentStyles}
+							header={"Other Cities"}
+							weatherList={weatherList}
+							childrenStyles={childrenStyles}
+						onClick={handleCityClick}
+						loading={loading}
+						/>
+					)}
+				</div>
 		</div>
 	)
 }

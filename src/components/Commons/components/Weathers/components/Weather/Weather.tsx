@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactNode } from "react";
+import React from "react";
 import classNames from 'classnames/bind';
 import styles from './Weather.module.css';
 import { ICloudsProps } from "../../../../../../interfaces/weather";
@@ -19,7 +19,7 @@ const Weather: React.FC<IWeatherComponentProps> = (props) => {
 	return (
 		<div>
 			<CustomTag className={childrenStyles[0]} onClick={() => onClick ? onClick() : null}>
-				<h3 className={cx('title',childrenStyles[1])}>{title}</h3>
+				<h3 className={cx('title', childrenStyles[1])}>{title}</h3>
 				<img
 					className={cx('icon', childrenStyles[2])}
 					src={`http://openweathermap.org/img/wn/${clouds.icon}@2x.png`}
