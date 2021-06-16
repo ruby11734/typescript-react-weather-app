@@ -17,7 +17,7 @@ const Weather: React.FC<IWeatherComponentProps> = (props) => {
 	const cx = classNames.bind(styles);
 
 	return (
-		<div>
+		<>
 			<CustomTag className={childrenStyles[0]} onClick={() => onClick ? onClick() : null}>
 				<h3 className={cx('title', childrenStyles[1])}>{title}</h3>
 				<img
@@ -27,7 +27,7 @@ const Weather: React.FC<IWeatherComponentProps> = (props) => {
 				/>
 				<div className={cx('temperature', childrenStyles[3])}>{temperature}</div>
 			</CustomTag>
-		</div>
+		</>
 	);
  }
 

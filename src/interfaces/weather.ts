@@ -1,5 +1,4 @@
-import { AxiosResponse } from "axios";
-
+import { PayloadAction } from "@reduxjs/toolkit";
 export interface ICoordinate {
 	lat: number;
 	lon: number;
@@ -11,19 +10,28 @@ export interface IWeatherProps {
 	dt_txt: string;
 	main: {
 		temp: number;
-		temp_min?: number;
-		temp_max?: number;
-		humidity?: number;
+		temp_min: number;
+		temp_max: number;
+		humidity: number;
 	}
 	weather: ICloudsProps[];
-	wind?: {
+	wind: {
 		speed: number;
 	}
 
 }
 
 export interface ICloudsProps {
-	id?: number;
+	id: number;
 	main: string;
 	icon: string;
+}
+
+export interface ICityWeatherState {
+	cityWeather?: IWeatherProps;
+}
+
+export interface ICityWeatherReducer {
+	state: ICityWeatherState,
+	action: PayloadAction<IWeatherProps>,
 }

@@ -26,11 +26,3 @@ export async function getWeathersByMultipleCityId(ids: Array<number>): Promise<A
 		}
 	});
 }
-
-export async function getWeatherByCityName(name: string): Promise<AxiosResponse> {
-	return OpenWeatherMap.get('weather', {
-		params: {
-			q: `${name}, au`,
-		}
-	})
-}

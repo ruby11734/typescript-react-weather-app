@@ -27,6 +27,7 @@
 	text-align: left;
 	border: 1px solid white;
 	cursor: pointer;
+	width: 100%;
 }
 
 .city:hover{

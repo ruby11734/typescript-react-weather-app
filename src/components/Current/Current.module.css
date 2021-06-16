@@ -47,12 +47,14 @@
 	display: flex;
 	justify-content: center;
 	order: -1;
+	text-align: center;
 }
 
 .location{
 	margin:0;
 	font-size: 40px;
 	font-weight: 300;
+	max-width: 200px;
 }
 
 .location::after{

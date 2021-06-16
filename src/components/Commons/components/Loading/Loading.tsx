@@ -6,7 +6,7 @@ interface ILoadingProps {
 	loadingStyle?: string;
 }
 
-export default ({loadingStyle}: ILoadingProps) => {
+const Loading = ({ loadingStyle }: ILoadingProps) => {
 	const cx = classNames.bind(styles);
 
 	return(
@@ -15,3 +15,5 @@ export default ({loadingStyle}: ILoadingProps) => {
 		</div>
 	)
 }
+
+export default Loading;

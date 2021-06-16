@@ -1,4 +1,4 @@
-const MAIN_CITY = [
+export const MAIN_CITY = [
 	{
 		id: 2158177,
 		name: 'Melbourne',
@@ -17,4 +17,4 @@ const MAIN_CITY = [
 	},
 ];
 
-export default MAIN_CITY;
+export const WEEK = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];

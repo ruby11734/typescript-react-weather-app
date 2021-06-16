@@ -6,16 +6,18 @@ import VerticalDivider from "../Commons/components/VerticalDivider";
 import Meta from "../Commons/components/Meta";
 import styles from './Current.module.css';
 import Loading from "../Commons/components/Loading";
-import { getWeatherByCityName } from "../../apis/getWeather/getWeather";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectSetCity, setCityWeather } from "../../store/slices/WeatherSlice";
 
-interface ICurrentProps {
-	cityWeather?: IWeatherProps | null;
-}
 
-const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
+
+const Current: React.FC = () => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [coord, setCoord] = useState<ICoordinate>();
 	const [weather, setWeather] = useState<IWeatherProps>();
+
+	const cityWeather = useAppSelector(selectSetCity).cityWeather;
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		getLocation();
@@ -23,7 +25,11 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 
 	useEffect(() => {
 		getLocationWeather();
-	}, [coord?.lat, cityWeather]);
+	}, [coord]);
+
+	useEffect(() => {
+		cityWeather && setWeather(cityWeather);
+	 },[cityWeather]);
 
 	const getLocation = async () => {
 		await getCurrentLocation().then((position) => {
@@ -40,9 +46,8 @@ const Current: React.FC<ICurrentProps> = ({cityWeather}) => {
 				const { data } = res;
 				setWeather(data);
 				setLoading(false);
+				dispatch(setCityWeather(data));
 			})
-		} else if (cityWeather) {
-			setWeather(cityWeather);
 		}
 	}
 
