@@ -1,0 +1,43 @@
+.forecast{
+	order: -1;
+}
+
+.weathers{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 280px;
+}
+
+.everyday{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.day{
+	margin: 16px 0;
+}
+
+.icon{
+	margin: 16px 0;
+}
+
+.temperature{
+	margin-top: 16px;
+}
+
+@media screen and (min-width: 1024px){
+	.forecast{
+		flex: 1;
+		order: 1;
+	}
+
+	.weathers{
+		width: 500px;
+	}
+
+	.icon{
+		width: 75px;
+	}
+}
