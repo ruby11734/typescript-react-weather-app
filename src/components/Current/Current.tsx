@@ -24,11 +24,16 @@ const Current: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
+		setLoading(true);
 		getLocationWeather();
 	}, [coord]);
 
 	useEffect(() => {
-		cityWeather && setWeather(cityWeather);
+		setLoading(true);
+		if (cityWeather) {
+			setWeather(cityWeather);
+			setLoading(false);
+		}
 	 },[cityWeather]);
 
 	const getLocation = async () => {
