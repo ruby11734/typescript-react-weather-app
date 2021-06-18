@@ -22,7 +22,7 @@ const Weather: React.FC<IWeatherComponentProps> = (props) => {
 				<h3 className={cx('title', childrenStyles[1])}>{title}</h3>
 				<img
 					className={cx('icon', childrenStyles[2])}
-					src={`http://openweathermap.org/img/wn/${clouds.icon}@2x.png`}
+					src={`https://openweathermap.org/img/wn/${clouds.icon}@2x.png`}
 					alt={clouds.main}
 				/>
 				<div className={cx('temperature', childrenStyles[3])}>{temperature}</div>

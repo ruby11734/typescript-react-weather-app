@@ -17,6 +17,7 @@ const Forecast: React.FC = () => {
 	const id = useAppSelector(selectSetCity).cityWeather?.id;
 
 	useEffect(() => {
+		setLoading(true);
 		getForecast();
 	}, [id]);
 
