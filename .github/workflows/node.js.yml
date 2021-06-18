@@ -26,6 +26,6 @@ jobs:
     - run: npm ci
     - run: CI='' npm run build --if-present
     - run: git config --global user.email "glin0214@gmail.com"
-    - run: git config --global user.name "glin0214@gmail.com"
+    - run: git config --global user.name "Gaohui"
     - run: npm run deploy
 
