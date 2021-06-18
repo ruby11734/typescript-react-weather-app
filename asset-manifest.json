@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.a18abd74.chunk.css",
-    "main.js": "/static/js/main.347b16ab.chunk.js",
-    "main.js.map": "/static/js/main.347b16ab.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.11f320ca.js",
-    "runtime-main.js.map": "/static/js/runtime-main.11f320ca.js.map",
-    "static/js/2.3bc31fd6.chunk.js": "/static/js/2.3bc31fd6.chunk.js",
-    "static/js/2.3bc31fd6.chunk.js.map": "/static/js/2.3bc31fd6.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.a18abd74.chunk.css.map": "/static/css/main.a18abd74.chunk.css.map",
-    "static/js/2.3bc31fd6.chunk.js.LICENSE.txt": "/static/js/2.3bc31fd6.chunk.js.LICENSE.txt",
-    "static/media/App.module.css": "/static/media/background.6e9c4f08.png",
-    "static/media/Current.module.css": "/static/media/background1.f9fa5e98.jpeg"
+    "main.css": "/typescript-react-weather-app/static/css/main.34783874.chunk.css",
+    "main.js": "/typescript-react-weather-app/static/js/main.f72dd13d.chunk.js",
+    "main.js.map": "/typescript-react-weather-app/static/js/main.f72dd13d.chunk.js.map",
+    "runtime-main.js": "/typescript-react-weather-app/static/js/runtime-main.d331552d.js",
+    "runtime-main.js.map": "/typescript-react-weather-app/static/js/runtime-main.d331552d.js.map",
+    "static/js/2.3bc31fd6.chunk.js": "/typescript-react-weather-app/static/js/2.3bc31fd6.chunk.js",
+    "static/js/2.3bc31fd6.chunk.js.map": "/typescript-react-weather-app/static/js/2.3bc31fd6.chunk.js.map",
+    "index.html": "/typescript-react-weather-app/index.html",
+    "static/css/main.34783874.chunk.css.map": "/typescript-react-weather-app/static/css/main.34783874.chunk.css.map",
+    "static/js/2.3bc31fd6.chunk.js.LICENSE.txt": "/typescript-react-weather-app/static/js/2.3bc31fd6.chunk.js.LICENSE.txt",
+    "static/media/App.module.css": "/typescript-react-weather-app/static/media/background.6e9c4f08.png",
+    "static/media/Current.module.css": "/typescript-react-weather-app/static/media/background1.f9fa5e98.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.11f320ca.js",
+    "static/js/runtime-main.d331552d.js",
     "static/js/2.3bc31fd6.chunk.js",
-    "static/css/main.a18abd74.chunk.css",
-    "static/js/main.347b16ab.chunk.js"
+    "static/css/main.34783874.chunk.css",
+    "static/js/main.f72dd13d.chunk.js"
   ]
 }
