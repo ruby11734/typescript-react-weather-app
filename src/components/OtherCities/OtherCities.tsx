@@ -8,6 +8,7 @@ import styles from './OtherCities.module.css';
 import Weather from '../Commons/components/Weathers/components/Weather';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { selectSetCity, setCityWeather } from '../../store/slices/WeatherSlice';
+import { selectSetError } from '../../store/slices/LocationSlice';
 
 const childrenStyles: string[] = [styles.city, styles.name, styles.icon, styles.temperature];
 
@@ -17,35 +18,37 @@ const OtherCities:React.FC= () => {
 	const [toggle, setToggle] = useState<boolean>(false);
 
 	const currentCity = useAppSelector(selectSetCity).cityWeather;
+	const locationError = useAppSelector(selectSetError).error;
 	const dispatch = useAppDispatch();
+
 	const cx = classNames.bind(styles);
 
 	useEffect(() => {
 		getCityWeather();
-	}, []);
+	}, [locationError]);
 
 	const getCityWeather = async () => {
 		const ids = MAIN_CITY.map(city => city.id);
-		await getWeathersByMultipleCityId(ids).then((response) => {
-			const { data } = response;
-			setWeatherList(data.list);
-			setLoading(false);
-		});
+		const { list } = await (await getWeathersByMultipleCityId(ids)).data;
+		setWeatherList(list);
+		setLoading(!list);
+
+		// if location is not enabled, set the first weather as default
+		locationError &&  dispatch(setCityWeather(list[0]));
 	}
 
 	const handleToggle = () => setToggle(!toggle);
 
-		const handleCityClick = (weather: IWeatherProps, buttonIndex: number) => {
-			if (weatherList) {
-				const updatedList = weatherList.map((item, index) => {
-					if (currentCity && index === buttonIndex) {
-						return currentCity;
-					}
-					return item;
-				})
+	const handleCityClick = (weather: IWeatherProps, buttonIndex: number) => {
+		if (weatherList && currentCity) {
+			if (!weatherList.find(item => item.id === currentCity.id)) {
+				const updatedList = weatherList.map((item, index) => (
+					index === buttonIndex ? currentCity : item
+				))
 				setWeatherList(updatedList);
 			}
-			currentCity && dispatch(setCityWeather(weather));
+			dispatch(setCityWeather(weather));
+		}
 	};
 
 	return (

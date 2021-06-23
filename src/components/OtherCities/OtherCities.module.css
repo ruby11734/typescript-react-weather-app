@@ -53,6 +53,7 @@
 	.otherCities{
 		border: 0;
 		order: -1;
+		width: 350px;
 	}
 
 	.toggle{

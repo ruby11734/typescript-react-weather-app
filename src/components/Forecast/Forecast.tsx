@@ -17,17 +17,14 @@ const Forecast: React.FC = () => {
 	const id = useAppSelector(selectSetCity).cityWeather?.id;
 
 	useEffect(() => {
-		setLoading(true);
 		getForecast();
 	}, [id]);
 
 	const getForecast = async () => {
 		if (id) {
-			await getForecastById(id).then((response) => {
-				const { list } = response.data;
-				setWeatherList(getWeeklyWeather(list));
-				setLoading(false);
-			})
+			const { list } = (await getForecastById(id)).data;
+			setWeatherList(getWeeklyWeather(list));
+			setLoading(!list);
 		}
 	}
 

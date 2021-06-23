@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import getCurrentLocation from "../../apis/getCurrentLocation";
 import { getWeatherByCoordinate } from "../../apis/getWeather";
-import { ICoordinate, IWeatherProps } from "../../interfaces/weather";
+import { IWeatherProps } from "../../interfaces/weather";
 import VerticalDivider from "../Commons/components/VerticalDivider";
 import Meta from "../Commons/components/Meta";
 import styles from './Current.module.css';
 import Loading from "../Commons/components/Loading";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { selectSetCity, setCityWeather } from "../../store/slices/WeatherSlice";
-
-
+import { setLocationError } from "../../store/slices/LocationSlice";
 
 const Current: React.FC = () => {
 	const [loading, setLoading] = useState<boolean>(true);
-	const [coord, setCoord] = useState<ICoordinate>();
 	const [weather, setWeather] = useState<IWeatherProps>();
 
 	const cityWeather = useAppSelector(selectSetCity).cityWeather;
@@ -24,35 +22,22 @@ const Current: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		setLoading(true);
-		getLocationWeather();
-	}, [coord]);
-
-	useEffect(() => {
-		setLoading(true);
 		if (cityWeather) {
 			setWeather(cityWeather);
-			setLoading(false);
+			setLoading(!cityWeather);
 		}
-	 },[cityWeather]);
+	}, [cityWeather]);
 
 	const getLocation = async () => {
-		await getCurrentLocation().then((position) => {
-			setCoord({
-				lat: position.coords.latitude,
-				lon: position.coords.longitude,
-			})
-		});
-	}
-
-	const getLocationWeather = async () => {
-		if (coord && !cityWeather) {
-			await getWeatherByCoordinate(coord).then((res) => {
-				const { data } = res;
-				setWeather(data);
-				setLoading(false);
-				dispatch(setCityWeather(data));
-			})
+		try {
+			const {coords} = await getCurrentLocation();
+			const { data } = await getWeatherByCoordinate(coords);
+			setWeather(data);
+			setLoading(!data);
+			dispatch(setCityWeather(data));
+		} catch (error) {
+			dispatch(setLocationError());
+			alert("Please make sure to enable the location permission!");
 		}
 	}
 
