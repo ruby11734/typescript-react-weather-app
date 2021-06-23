@@ -1,17 +1,18 @@
 import { AxiosResponse } from "axios";
-import { ICoordinate } from "../../interfaces/weather";
+import { ICoordinate } from "../../interfaces/location";
+import { IWeatherProps } from "../../interfaces/weather";
 import OpenWeatherMap from "../../utils/OpenWeatherMap/OpenWeatherMap"
 
-export async function getWeatherByCoordinate (coord: ICoordinate): Promise<AxiosResponse> {
+export async function getWeatherByCoordinate (coord: ICoordinate): Promise<AxiosResponse<IWeatherProps>> {
 	return OpenWeatherMap.get('/weather', {
 		params: {
-			lat: coord.lat,
-			lon: coord.lon,
+			lat: coord.latitude,
+			lon: coord.longitude,
 		},
 	});
 }
 
-export async function getWeatherByCityId(id: number): Promise<AxiosResponse> {
+export async function getWeatherByCityId(id: number): Promise<AxiosResponse<IWeatherProps>> {
 	return OpenWeatherMap.get('/weather', {
 		params: {
 			id,
