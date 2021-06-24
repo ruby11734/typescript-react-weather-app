@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Tech Stacks
+- React JS
+- Typescript
+- React Redux
+- Hooks
+- Axios
+- CSS3
+- HTML5
+- Open Weather Api
+
 ## Available Scripts
 
 In the project directory, you can run:
