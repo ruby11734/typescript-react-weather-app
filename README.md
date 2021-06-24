@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Github Pages Deployment
+https://ruby11734.github.io/typescript-react-weather-app/
+
 ## Tech Stacks
 - React JS
 - Typescript
