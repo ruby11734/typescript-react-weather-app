@@ -1,9 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import weatherReducer from './slices/WeatherSlice';
+import locationErrorReducer from './slices/LocationSlice';
+
 
 export const store = configureStore({
 	reducer: {
-		cityWeather: weatherReducer,
+		setCityWeather: weatherReducer,
+		setLocationError: locationErrorReducer,
 	}
 });
 

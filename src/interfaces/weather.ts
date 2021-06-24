@@ -1,8 +1,4 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-export interface ICoordinate {
-	lat: number;
-	lon: number;
-}
 
 export interface IWeatherProps {
 	id: number;

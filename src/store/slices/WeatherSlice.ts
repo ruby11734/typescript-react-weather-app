@@ -9,13 +9,13 @@ export const WeatherSlice = createSlice({
 	initialState,
 	reducers: {
 		setCityWeather: (state: ICityWeatherState, action: PayloadAction<IWeatherProps>) => {
-			state.cityWeather = action.payload
+			state.cityWeather = action.payload;
 		}
 	}
 });
 
 export const { setCityWeather } = WeatherSlice.actions;
 
-export const selectSetCity = (state: RootState) => state.cityWeather;
+export const selectSetCity = (state: RootState) => state.setCityWeather;
 
 export default WeatherSlice.reducer;
