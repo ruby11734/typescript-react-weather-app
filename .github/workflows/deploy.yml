@@ -27,7 +27,7 @@ jobs:
         npm i
         CI='' npm run build --if-present
       env:
-        REACT_APP_WEATHER_APP_ID: ${{APP_ID}}
+        REACT_APP_WEATHER_APP_ID: ${{config.APP_ID}}
 
     - name: Deploy
       run: |
