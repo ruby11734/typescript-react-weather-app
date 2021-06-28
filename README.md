@@ -3,8 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Deployment
-Github Pages: https://ruby11734.github.io/typescript-react-weather-app/
-AWS S3: https://typescript-react-weather-app.s3.ap-southeast-2.amazonaws.com/index.html
+- Github Pages: https://ruby11734.github.io/typescript-react-weather-app/
+- AWS S3: https://typescript-react-weather-app.s3.ap-southeast-2.amazonaws.com/index.html
 
 ## Tech Stacks
 - React JS
