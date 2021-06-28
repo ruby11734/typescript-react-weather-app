@@ -44,7 +44,7 @@ const Forecast: React.FC = () => {
 						key={weather.dt_txt}
 						childrenStyles={childrenStyles}
 						CustomTag={'div'}
-						title={WEEK[new Date(weather.dt_txt).getDay()]}
+						title={WEEK[new Date(weather.dt_txt.replace(' ', 'T')).getDay()]}
 						clouds={weather.weather[0]}
 						temperature={`${Math.round(weather.main.temp)} °`}
 					/>
