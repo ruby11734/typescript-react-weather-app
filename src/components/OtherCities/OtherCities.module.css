@@ -37,7 +37,6 @@
 .name{
 	margin:0;
 	width: 120px;
-	flex: 1;
 }
 
 .icon{
@@ -47,6 +46,7 @@
 .temperature{
 	width: 45px;
 	text-align: center;
+	flex:1;
 }
 
 @media screen and (min-width: 1024px) {

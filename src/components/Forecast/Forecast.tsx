@@ -29,7 +29,7 @@ const Forecast: React.FC = () => {
 	}
 
 	const getWeeklyWeather = (list: Array<IWeatherProps>) => (
-		list.filter(weather => new Date(weather.dt_txt).getHours() === 12)
+		list.filter(weather => new Date(weather.dt_txt.replace(' ', 'T')).getHours() === 12)
 	)
 
 	return (
