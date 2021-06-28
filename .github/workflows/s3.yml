@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: CI='' npm run build
         env:
-          REACT_APP_WEATHER_APP_ID: ${{secrets.APP_ID}}
+          REACT_APP_WEATHER_APP_ID: ${{secrets.REACT_APP_WEATHER_APP_ID}}
 
       - name: deploy
         uses: jakejarvis/s3-sync-action@master
