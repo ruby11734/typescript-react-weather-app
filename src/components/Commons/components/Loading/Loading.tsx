@@ -11,7 +11,7 @@ const Loading = ({ loadingStyle }: ILoadingProps) => {
 
 	return(
 		<div className={cx('loading', loadingStyle)}>
-			<div >loading...</div>
+			<div >Fetching Data...</div>
 		</div>
 	)
 }

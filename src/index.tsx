@@ -8,7 +8,6 @@ import App from './components/App';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<h1>test cicd</h1>
 		<Provider store ={store}>
 			<App />
 		</Provider>
